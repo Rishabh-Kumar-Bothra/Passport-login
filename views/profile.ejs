@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Test App</title>
+    <title>Homepage</title>
     <style>
         body{
             font-family: arial;
@@ -36,6 +36,15 @@
             padding: 0 10px;
             color: #333;
         }
+        main img{
+            width: 40px;
+            margin-right: 10px;
+            position: relative;
+            top: 12px;
+        }
+        main p{
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -51,11 +60,12 @@
     </ul>
 </nav>
 <header>
-    <h1>Rishabh Kr Bothra [Oauth-test_app]</h1>
-    <h2>Homepage</h2>
+    <h1>Welcome to your profile, <%= user.username %></h1>
 </header>
 <main>
-    <p>simple test app for social oauth login using passportJS</p>
+   <img src="<%= user.thumbnail%>"/>
+    <p>This is your profile</p>
+
 </main>
 </body>
 </html>
