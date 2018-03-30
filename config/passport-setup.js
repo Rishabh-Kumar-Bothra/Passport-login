@@ -9,15 +9,23 @@ passport.use(
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret,
         callbackURL: '/auth/google/redirect'
-    }, (accessToken, refreshToken, profile, done) => {
+    } ,(accessToken, refreshToken, profile, done) => {
         // passport callback function
         //console.log('passport callback function fired:');
         //console.log(profile);
-        new User({
-            googleId: profile.id,
-            username: profile.displayName
-        }).save().then((newUser) => {
-            console.log('new user created: ', newUser);
-        });
-    })
-);
+        User.findOne({googleId:profile.id}).then((currentUser)=>{
+            if(currentUser){
+                console.log('currentUser :'+ currentUser)
+            }
+            else{
+                new User({
+                    googleId: profile.id,
+                    username: profile.displayName
+                }).save().then((newUser) => {
+                    console.log('new user created: ', newUser);
+                });
+            }
+        })
+
+   })
+ );
