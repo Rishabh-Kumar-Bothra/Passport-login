@@ -6,8 +6,11 @@ const profileRoutes = require('./routes/profile-routes');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+const path = require('path');
 
 const app = express();
+
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // set view engine
 app.set('view engine', 'ejs');
@@ -40,3 +43,8 @@ app.get('/', (req, res) => {
 app.listen(3010, () => {
     console.log('app now listening for requests on port 3010');
 });
+
+
+/* for creating futher oauth like for facebook , github , twitter etc the process remains same we need to register our app into different platforms
+and generate different URI callbacks for different login system we can also use passport directly without any socia oauth
+ */
