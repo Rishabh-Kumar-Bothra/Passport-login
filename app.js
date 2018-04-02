@@ -10,6 +10,8 @@ const path = require('path');
 
 const app = express();
 
+var port = process.env.PORT || 3010 ;
+
 //app.use(express.static(path.join(__dirname, 'public')));
 
 // set view engine
@@ -40,8 +42,8 @@ app.get('/', (req, res) => {
     res.render('home', { user: req.user });
 });
 
-app.listen(3010, () => {
-    console.log('app now listening for requests on port 3010');
+app.listen(port, () => {
+    console.log(`app now listening for requests on port ${port}` );
 });
 
 
